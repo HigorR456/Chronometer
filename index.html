@@ -5,83 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cronometer</title>
-    <style>
-        body{
-            background-color: rgb(0, 0, 0);
-            font-family: Arial;
-        }
-        div#display{
-            background-color: white;
-            height: 200px;
-            width: 420px;
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        div#clock{
-            background-color: rgb(20, 20, 20);
-            height: 100px;
-            width: 420px;
-            color: white;
-            font-family: Arial;
-            font-size: 100px;
-        }
-        span#milli{
-            font-size: 75px;
-        }
-        div#buttons{
-            font-size: 0;
-        }
-        button{
-            height: 100px;
-            width: 140px;
-            color: white;
-            font-family: Arial;
-            font-size: 30px;
-            border: none;
-        }
-        button#startbtn{
-            background-color: rgb(35, 59, 35);
-        }
-        button#pausebtn{
-            background-color: rgb(34, 34, 73);
-        }
-        button#stopbtn{
-            background-color: rgb(80, 30, 30);
-        }
-        button#startbtn:hover{
-            background-color: rgb(0, 194, 0);
-            box-shadow: 0px 0px 95px -28px rgb(180, 255, 180);
-        }
-        button#pausebtn:hover{
-            background-color: rgb(0, 50, 194);
-            box-shadow: 0px 0px 95px -28px rgb(180, 180, 255);
-        }
-        button#stopbtn:hover{
-            background-color: rgb(194, 0, 0);
-            box-shadow: 0px 0px 95px -28px rgb(255, 180, 180);
-        }
-        .stylestart1{
-            box-shadow: 0px 0px 200px -60px rgb(255, 255, 255);
-        }
-        .stylestart2{
-            text-shadow: 1px 1px 5px white;
-        }
-        .stylepause{
-            box-shadow: 0px 0px 200px -60px rgb(0, 50, 194);
-        }
-        .stylestop{
-            box-shadow: 0px 0px 0px 0px rgb(255, 255, 255);
-            text-shadow: 0px 0px 0px white;
-        }
-    </style>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="chronometer.css">
+    
 </head>
 <body>
     <div id="display">
-        <div id="clock">
-            <span id="minutes">00</span>:<span id="seconds">00</span>:<span id="milli">00</span>
+        <div class="clock" id="clock">
+            <span id="minutes">00</span>
+            <span class="colon">:</span>
+            <span id="seconds">00</span>
+            <span class="colon">:</span>
+            <span id="milli">00</span>
         </div>
         <div id="buttons">
             <button id="startbtn">Start</button>
@@ -90,97 +25,7 @@
         </div>
     </div>
 
-    <script>
-        let mil = 0;
-        let sec = 0;
-        let min = 0;
-        var c
-        
-        //start the cronometer and disable the pressed button
-        let start1 = document.getElementById('startbtn');
-        start1.addEventListener('click', start);
-        start1.addEventListener('click', () => start1.disabled = true);
-        start1.addEventListener('click', () => pause1.disabled = false);
-        start1.addEventListener('click', () => stop1.disabled = false);
-
-        //pause the cronometer and disable the pressed button
-        let pause1 = document.getElementById('pausebtn');
-        pause1.addEventListener('click', pause);
-        pause1.addEventListener('click', () => start1.disabled = false);
-        pause1.addEventListener('click', () => pause1.disabled = true);
-        pause1.addEventListener('click', () => stop1.disabled = false);
-
-        //stop the cronometer and disable the pressed button
-        let stop1 = document.getElementById('stopbtn');
-        stop1.addEventListener('click', stop);
-        stop1.addEventListener('click', () => start1.disabled = false);
-        stop1.addEventListener('click', () => pause1.disabled = false);
-        stop1.addEventListener('click', () => stop1.disabled = true);
-
-        //function that starts the clock
-        function start() {
-            c = setInterval(() => {timer()}, 10);
-            document.getElementById('display').setAttribute('class', 'stylestart1');
-            document.getElementById('clock').setAttribute('class', 'stylestart2');
-        }
-
-        //function that pauses the clock
-        function pause() {
-            clearInterval(c);
-            document.getElementById('display').setAttribute('class', 'stylepause');
-        }
-
-        //function that stops the clock
-        function stop() {
-            clearInterval(c);
-            mil = 0;
-            sec = 0;
-            min = 0;
-            document.getElementById('minutes').innerHTML='00';
-            document.getElementById('seconds').innerHTML='00';
-            document.getElementById('milli').innerHTML='00';
-            document.getElementById('display').setAttribute('class', 'stylestop');
-            document.getElementById('clock').setAttribute('class', 'stylestop');
-        }
-
-
-        //clock function
-        function timer() {
-            //stop cronometer when reach 60 minutes
-            if(min>=60){
-                clearInterval(c);}
-            mil++;
-            //add 1 sec when mil 1000
-            if(mil==100){
-                sec++;}
-            //add 1 min when sec 60
-            if(sec==60){
-                min++;}
-            //reset mil when reach 1000
-            if(mil==100){
-                mil=0;} 
-            //reset seconds when reach 60
-            if(sec==60){
-                sec=0;} 
-            //display and keep three algorithms in milli
-            if(mil<10){
-                document.getElementById('milli').innerHTML=`0${mil}`;
-            } else document.getElementById('milli').innerHTML=mil;
-            //display and keep two algorithms in seconds
-            if(sec<10){
-                document.getElementById('seconds').innerHTML=`0${sec}`;
-            } else document.getElementById('seconds').innerHTML=sec;
-            //display keep two algorithms in minutes
-            if(min<10){
-                document.getElementById('minutes').innerHTML=`0${min}`;
-            } else document.getElementById('minutes').innerHTML=min;
-        }
-        
-        
-
-        
-
-    
-    </script>
+    <!-- Scrips -->
+    <script src="chronometer.js"></script>
 </body>
 </html>
