@@ -3,21 +3,21 @@
         let min = 0;
         var c
         
-        //start the cronometer and disable the pressed button
+        //start the chronometer and disable the pressed button
         let start1 = document.getElementById('startbtn');
         start1.addEventListener('click', start);
         start1.addEventListener('click', () => start1.disabled = true);
         start1.addEventListener('click', () => pause1.disabled = false);
         start1.addEventListener('click', () => stop1.disabled = false);
 
-        //pause the cronometer and disable the pressed button
+        //pause the chronometer and disable the pressed button
         let pause1 = document.getElementById('pausebtn');
         pause1.addEventListener('click', pause);
         pause1.addEventListener('click', () => start1.disabled = false);
         pause1.addEventListener('click', () => pause1.disabled = true);
         pause1.addEventListener('click', () => stop1.disabled = false);
 
-        //stop the cronometer and disable the pressed button
+        //stop the chronometer and disable the pressed button
         let stop1 = document.getElementById('stopbtn');
         stop1.addEventListener('click', stop);
         stop1.addEventListener('click', () => start1.disabled = false);
@@ -53,7 +53,7 @@
 
         //clock function
         function timer() {
-            //stop cronometer when reach 60 minutes
+            //stop chronometer when reach 60 minutes
             if(min>=60){
                 clearInterval(c);}
             mil++;

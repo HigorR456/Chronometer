@@ -1,4 +1,4 @@
-# Cronometer
+# Chronometer
  
  This is a chronometer which counts until 60 minutes, it has three buttons:
 
