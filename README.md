@@ -3,7 +3,9 @@
  This is a chronometer which counts until 60 minutes, it has three buttons:
 
  -Start: starts the count;
+ 
  -Pause: stops the count;
+ 
  -Stop: resets the count;
 
  It was done using only html, css and javascript.
